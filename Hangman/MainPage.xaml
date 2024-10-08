@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="Hangman.MainPage"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+	<ScrollView>
+		<Grid RowDefinitions=".6*, .4*" RowSpacing="20">
+
+			<VerticalStackLayout Spacing="10">
+				<Label
+					FontAttributes="Bold"
+					FontSize="30"
+					HorizontalOptions="Center"
+					Text="{Binding StatusJogo}"
+					TextColor="Red" />
+				<Image HeightRequest="220" Source="{Binding ImagemAtual}" />
+				<Label
+					FontSize="40"
+					HorizontalOptions="Center"
+					Text="{Binding Destaque}"
+					VerticalOptions="Center" />
+				<Label
+					BackgroundColor="White"
+					FontAttributes="Bold"
+					FontSize="30"
+					HorizontalTextAlignment="Center"
+					Text="{Binding Mensagem}" />
+				<Button
+					x:Name="Reset"
+					BackgroundColor="Black"
+					Clicked="Reset_Clicked"
+					FontAttributes="Bold"
+					FontSize="Medium"
+					HorizontalOptions="Center"
+					Text="Reset"
+					TextColor="White"
+					WidthRequest="100" />
+			</VerticalStackLayout>
+
+			<FlexLayout
+				x:Name="LetrasContainer"
+				Grid.Row="1"
+				BindableLayout.ItemsSource="{Binding Letras}"
+				JustifyContent="SpaceEvenly"
+				Wrap="Wrap">
+
+				<BindableLayout.ItemTemplate>
+
+					<DataTemplate>
+						<Button
+							BackgroundColor="Black"
+							Clicked="Button_Clicked"
+							FontAttributes="Bold"
+							HeightRequest="50"
+							Text="{Binding .}"
+							WidthRequest="50" />
+					</DataTemplate>
+
+				</BindableLayout.ItemTemplate>
+			</FlexLayout>
+		</Grid>
+	</ScrollView>
+
+</ContentPage>
